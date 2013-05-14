@@ -29,15 +29,18 @@ GOOGLE_STRINGS_LIB_FILES = strings/ascii_ctype.cc \
 GOOGLE_UTIL_CODING_LIB_FILES = util/coding/coder.cc \
                                util/coding/varint.cc
 
+GOOGLE_UTIL_HASH_LIB_FILES = util/hash/hash.cc
+
 GOOGLE_UTIL_MATH_LIB_FILES = util/math/mathutil.cc \
                              util/math/mathlimits.cc \
                              util/math/exactfloat/exactfloat.cc
 
 libs2_la_CXXFLAGS = $(COMPILER_FLAGS)
-libs2_la_LDFLAGS = $(CRYPTO_LIBS)
+libs2_la_LDFLAGS = $(CRYPTO_LIBS) -lgflags
 libs2_la_SOURCES = $(GOOGLE_BASE_LIB_FILES) \
                    $(GOOGLE_STRINGS_LIB_FILES) \
                    $(GOOGLE_UTIL_CODING_LIB_FILES) \
+		   $(GOOGLE_UTIL_HASH_LIB_FILES) \
                    $(GOOGLE_UTIL_MATH_LIB_FILES) \
                    s1interval.cc \
                    s2cap.cc \
@@ -58,10 +61,11 @@ libs2_la_SOURCES = $(GOOGLE_BASE_LIB_FILES) \
                    s2regionunion.cc
 
 libs2cellid_la_CXXFLAGS = $(COMPILER_FLAGS)
-libs2cellid_la_LDFLAGS = $(CRYPTO_LIBS)
+libs2cellid_la_LDFLAGS = $(CRYPTO_LIBS) -lgflags
 libs2cellid_la_SOURCES = $(GOOGLE_BASE_LIB_FILES) \
                          $(GOOGLE_STRINGS_LIB_FILES) \
                          $(GOOGLE_UTIL_CODING_LIB_FILES) \
+			 $(GOOGLE_UTIL_HASH_LIB_FILES) \
                          $(GOOGLE_UTIL_MATH_LIB_FILES) \
                          s1angle.cc \
                          s2.cc \
