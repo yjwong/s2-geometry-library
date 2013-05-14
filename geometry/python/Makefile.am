@@ -1,6 +1,8 @@
 BUILT_SOURCES = s2_wrap.cpp
 SWIG_SOURCES = s2.swig
 
+CLEANFILES = s2_wrap.cpp s2.py
+
 pkgpython_PYTHON = s2.py
 pkgpyexec_LTLIBRARIES = _s2.la
 
