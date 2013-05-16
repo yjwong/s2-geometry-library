@@ -1,0 +1,38 @@
+Source: s2
+Priority: optional
+Maintainer: Wong Yong Jie <yjwong92@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, libgflags-dev, cdbs
+Standards-Version: 3.9.4
+Section: libs
+Homepage: http://code.google.com/p/s2-geometry-library/
+Vcs-Hg: https://code.google.com/p/s2-geometry-library/
+Vcs-Browser: http://code.google.com/p/s2-geometry-library/source/browse/
+
+Package: libs2-dev
+Section: libdevel
+Architecture: any
+Depends: libs2 (= ${binary:Version}), ${misc:Depends}, libgflags2
+Description: Library for Spherical Math (development files)
+ The S2 Geometry Library is a spherical geometry library, very useful for 
+ manipulating regions on the sphere (commonly on Earth) and indexing 
+ geographical data.
+ .
+ This package contains development libraries and header files.
+
+Package: libs2
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Library for Spherical Math
+ The S2 Geometry Library is a spherical geometry library, very useful for 
+ manipulating regions on the sphere (commonly on Earth) and indexing 
+ geographical data.
+
+Package: python-s2
+Section: python
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libs2 (= ${binary:Version})
+Description: Python bindings for libs2
+ The python-s2 package contains bindings for libs2, a library for spherical
+ math.
+
