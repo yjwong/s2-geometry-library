@@ -1,9 +1,9 @@
-m4_define([s2-geometry-library_major], [1])
-m4_define([s2-geometry-library_minor], [0])
-m4_define([s2-geometry-library_patch], [0])
+m4_define([s2_major], [1])
+m4_define([s2_minor], [0])
+m4_define([s2_patch], [0])
 
-AC_INIT([s2-geometry-library],
-        [s2-geometry-library.major.s2-geometry-library.minor.s2-geometry-library.patch])
+AC_INIT([s2],
+        [s2.major.s2.minor.s2.patch])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADER(config.h)
 

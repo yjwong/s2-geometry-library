@@ -1,2 +1,2 @@
-usr/lib/python3/dist-packages/s2-geometry-library/*.py
-usr/lib/python3/dist-packages/s2-geometry-library/_*.so*
+usr/lib/python3/dist-packages/s2/*.py
+usr/lib/python3/dist-packages/s2/_*.so*
