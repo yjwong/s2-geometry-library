@@ -51,8 +51,8 @@ AC_CHECK_HEADERS([gflags/gflags.h], [],
 have_swig=no
 AM_CONDITIONAL(ENABLE_PYTHON_BUILD, test "_$enable_python_build" = "_yes")
 if test "_$enable_python_build" = "_yes"; then
-    AM_PATH_PYTHON([3.3])
-    AX_PYTHON_DEVEL([>= '3.3'])
+    AM_PATH_PYTHON([3.2])
+    AX_PYTHON_DEVEL([>= '3.2'])
     AX_PKG_SWIG([2.0.0], [have_swig=yes])
     if test "$have_swig" = "yes"; then
         AX_LIB_CRYPTO([yes])

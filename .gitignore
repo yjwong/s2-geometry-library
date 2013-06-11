@@ -23,4 +23,5 @@ Makefile.in
 
 # Vim swap files
 *.sw*
+!*.swig
 
