@@ -14,12 +14,12 @@ In Python code, `import s2`.
 ## Building the Debian package
 
 ```console
-# apt-get install python-dev debhelper libgflags-dev cdbs swig build-essential fakeroot autoconf libtool
-# ./autogen.sh
-# pushd ..
-# tar jcf s2_1.0.0.orig.tar.bz2 s2-geometry-library/ --exclude=.git
-# popd
-# dpkg-buildpackage -rfakeroot
+apt-get install python-dev debhelper libgflags-dev cdbs swig build-essential fakeroot autoconf libtool pkg-config
+./autogen.sh
+pushd ..
+tar jcf s2_1.0.0.orig.tar.bz2 s2-geometry-library/ --exclude=.git
+popd
+dpkg-buildpackage -rfakeroot
 ```
 
 ## Installing the Debian package
@@ -27,12 +27,12 @@ In Python code, `import s2`.
 Once built:
 
 ```console
-# dpkg -i ../libs2*.deb ../python-s2*.deb
+dpkg -i ../libs2*.deb ../python-s2*.deb
 ```
 
 ## Running the tests (Python)
 
 ```console
-$ python test.py
+python test.py
 ```
 
