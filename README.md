@@ -14,7 +14,7 @@ In Python code, `import s2`.
 ## Building the Debian package
 
 ```console
-# apt-get install python-dev debhelper libgflags-dev cdbs swig build-essential fakeroot
+# apt-get install python-dev debhelper libgflags-dev cdbs swig build-essential fakeroot autoconf libtool
 # ./autogen.sh
 # pushd ..
 # tar jcf s2_1.0.0.orig.tar.bz2 s2-geometry-library/ --exclude=.git
