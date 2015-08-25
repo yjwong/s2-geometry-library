@@ -3,7 +3,7 @@
 rm -rf autom4te.cache
 
 aclocal --force -I m4
-libtoolize --copy
+glibtoolize --copy
 autoconf --force
 autoheader --force
 automake --copy --add-missing
