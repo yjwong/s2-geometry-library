@@ -13,8 +13,13 @@ using std::multiset;
 #include <vector>
 using std::vector;
 
+#if defined __GNUC__ || defined __APPLE__
+#include <ext/hash_map>
+#else
 #include <hash_map>
+#endif
 using __gnu_cxx::hash_map;
+
 
 #include <utility>
 using std::pair;

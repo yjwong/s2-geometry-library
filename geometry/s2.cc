@@ -21,7 +21,12 @@ COMPILE_ASSERT(S2::kSwapMask == 0x01 && S2::kInvertMask == 0x02,
 DEFINE_bool(s2debug, DEBUG_MODE, "Enable debugging checks in s2 code");
 
 static const uint32 MIX32 = 0x12b9b0a1UL;
-#include<hash_set>
+#if defined __GNUC__ || defined __APPLE__
+#include <ext/hash_set>
+#else
+#include <hash_set>
+#endif
+
 namespace __gnu_cxx {
 
 
