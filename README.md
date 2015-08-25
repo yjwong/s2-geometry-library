@@ -1,10 +1,12 @@
 # s2-geometry-library
+## changes for building on MacOSX
 
 * License: Apache 2.0 (see `geometry/LICENSE-2.0.txt`)
 * Upstream: https://code.google.com/p/s2-geometry-library/
 * With fixes from [yjwong](https://github.com/yjwong/s2-geometry-library).
 * Presentation: https://docs.google.com/presentation/d/1Hl4KapfAENAOf4gv-pSngKwvS_jwNVHRPZTTDzXXn6Q/view?pli=1
 * Documentation: none provided by upstream, read the presentation; other ports have better documentation
+
 
 This package has Python bindings which target Python 2.7.  You can also use it
 as a C++ library.
