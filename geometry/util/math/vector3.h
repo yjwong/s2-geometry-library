@@ -42,6 +42,7 @@ class Vector3 {
   typedef VType BaseType;
   // Create a new vector (0,0,0)
   Vector3();
+  ~Vector3();
   // Create a new vector (x,y,z)
   Vector3(const VType x, const VType y, const VType z);
   // Create a new 3D vector using the two first coordinates of a 2D vectors

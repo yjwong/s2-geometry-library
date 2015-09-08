@@ -48,6 +48,11 @@ Vector3<VType>::Vector3() {
   Clear();
 }
 
+// because swig is complaining about no destructor
+template <typename VType>
+Vector3<VType>::~Vector3() {
+}
+
 template <typename VType>
 Vector3<VType>::Vector3(const VType x, const VType y, const VType z) {
   c_[0] = x;
