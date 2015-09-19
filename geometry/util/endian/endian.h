@@ -179,13 +179,17 @@ class LittleEndian {
 
 
 // This one is safe to take as it's an extension
+#if !defined __APPLE__
 #define htonll(x) ghtonll(x)
+#endif
 
 // ntoh* and hton* are the same thing for any size and bytesex,
 // since the function is an involution, i.e., its own inverse.
 #define gntohl(x) ghtonl(x)
 #define gntohs(x) ghtons(x)
 #define gntohll(x) ghtonll(x)
+#if !defined __APPLE__
 #define ntohll(x) htonll(x)
+#endif
 
 #endif  // UTIL_ENDIAN_ENDIAN_H_

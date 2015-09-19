@@ -8,12 +8,6 @@ using std::max;
 using std::swap;
 using std::reverse;
 
-#include <hash_map>
-using __gnu_cxx::hash_map;
-
-#include <hash_set>
-using __gnu_cxx::hash_set;
-
 #include <iomanip>
 using std::setprecision;
 

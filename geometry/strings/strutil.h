@@ -15,11 +15,20 @@
 #include <functional>
 using std::less;
 
+#if defined __GNUC__ || defined __APPLE__
+#include <ext/hash_map>
+#else
 #include <hash_map>
+#endif
 using __gnu_cxx::hash_map;
 
+#if defined __GNUC__ || defined __APPLE__
+#include <ext/hash_set>
+#else
 #include <hash_set>
+#endif
 using __gnu_cxx::hash_set;
+
 
 #include <set>
 using std::set;
@@ -65,7 +74,7 @@ static const int kFastToBufferSize =       32;
 #include "stringprintf.h"
 #include "base/stl_decl.h"
 #include "base/port.h"
-#include "endian.h"
+//#include "endian.h"
 
 // ----------------------------------------------------------------------
 // FpToString()
