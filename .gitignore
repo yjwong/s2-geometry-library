@@ -29,6 +29,10 @@ Makefile.in
 *.o
 *.lo
 *.la
+*.os
+*.pyc
+*.dblite
+*.so
 libtool
 stamp-h1
 .deps
@@ -38,4 +42,4 @@ Makefile
 .libs
 tmp
 geometry/python/s2.py
-geometry/python/s2_wrap.cpp
+geometry/python/s2_wrap.cc

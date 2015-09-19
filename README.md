@@ -11,7 +11,24 @@ as a C++ library.
 
 In Python code, `import s2`.
 
-## Building the Debian package
+## Dependencies
+
+You'll need the development (-dev or -devel) versions of these libraries in order to build the library.
+
+- gflags
+- OpenSSL (used for [BIGNUM](https://www.openssl.org/docs/manmaster/crypto/bn.html) functions)
+
+## Building
+### The Linux From Scratch way
+
+```console
+scons
+sudo scons install
+```
+
+### As a Debian package
+
+FIXME: make this work with scons
 
 ```console
 apt-get install python-dev debhelper libgflags-dev cdbs swig build-essential fakeroot autoconf libtool pkg-config

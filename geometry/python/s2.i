@@ -2,7 +2,7 @@
 // Author: Andrew Eland (andrewe@google.com)
 
 %module s2
-%include base.swig
+%include base.i
 
 %{
 #include <sstream>
