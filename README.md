@@ -1,6 +1,6 @@
 # s2-geometry-library
 
-* License: Apache 2.0 (see `geometry/LICENSE-2.0.txt`)
+* License: Apache 2.0 (see `COPYING`)
 * Upstream: https://code.google.com/p/s2-geometry-library/
 * With fixes from [yjwong](https://github.com/yjwong/s2-geometry-library).
 * Presentation: https://docs.google.com/presentation/d/1Hl4KapfAENAOf4gv-pSngKwvS_jwNVHRPZTTDzXXn6Q/view?pli=1
