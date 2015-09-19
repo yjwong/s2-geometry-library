@@ -2,13 +2,12 @@
 
 * License: Apache 2.0 (see `COPYING`)
 * Upstream: https://code.google.com/p/s2-geometry-library/
-* With fixes from [yjwong](https://github.com/yjwong/s2-geometry-library).
+* With fixes from [micolous](https://github.com/micolous/), [silicontrip](https://github.com/silicontrip/) and [yjwong](https://github.com/yjwong/).
 * Presentation: https://docs.google.com/presentation/d/1Hl4KapfAENAOf4gv-pSngKwvS_jwNVHRPZTTDzXXn6Q/view?pli=1
 * Documentation: none provided by upstream, read the presentation; other ports have better documentation
 
 
-This package has Python bindings which target Python 2.7.  You can also use it
-as a C++ library.
+This package has Python bindings which target Python 2.7.  You can also use it as a C++ library.
 
 In Python code, `import s2`.
 
@@ -19,13 +18,17 @@ You'll need the development (-dev or -devel) versions of these libraries in orde
 - gflags
 - OpenSSL (used for [BIGNUM](https://www.openssl.org/docs/manmaster/crypto/bn.html) functions)
 
+On Mac OS X, you will need install these with MacPorts using the `+universal` build flag.
+
 ## Building
-### The Linux From Scratch way
+### The Linux From Scratch way (also for OSX)
 
 ```console
 scons
 sudo scons install
 ```
+
+This will also build the Python bindings.
 
 ### As a Debian package
 
