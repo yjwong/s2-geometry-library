@@ -4,7 +4,14 @@ env = Environment(
    CPPPATH=['.', 's2'],
    LIBS=['gflags', 'ssl', 'crypto'],
 )
-env.Append(CPPPATH=['/opt/local/include'], LIBPATH=['/opt/local/lib'])
+
+if env['PLATFORM'] == 'darwin':
+   # gflags and OpenSSL provided by MacPorts
+   env.Append(
+     CPPPATH=['/opt/local/include'],
+     LIBPATH=['/opt/local/lib'],
+   )
+
 
 BASE_LIB_FILES = [
    'base/int128.cc',
