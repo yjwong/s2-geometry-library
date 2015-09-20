@@ -2,16 +2,9 @@
 env = Environment(
    CPPFLAGS=['-Wall', '-Wwrite-strings', '-Woverloaded-virtual', '-Wno-sign-compare', '-DS2_USE_EXACTFLOAT', '-DHASH_NAMESPACE=std', '-std=c++11'],
    CPPPATH=['.', 's2'],
-   LIBS=['gflags', 'ssl', 'crypto'],
 )
 
-if env['PLATFORM'] == 'darwin':
-   # gflags and OpenSSL provided by MacPorts
-   env.Append(
-     CPPPATH=['/opt/local/include'],
-     LIBPATH=['/opt/local/lib'],
-   )
-
+env.ParseConfig('pkg-config libgflags openssl --cflags-only-I --libs')
 
 BASE_LIB_FILES = [
    'base/int128.cc',

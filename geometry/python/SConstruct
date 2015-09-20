@@ -4,7 +4,7 @@ import distutils.sysconfig, os.path, SCons.Tool.swig
 package_dir = os.path.join(distutils.sysconfig.get_python_lib(0,0), 's2')
 env = Environment(
    CPPFLAGS=['-Wall', '-Wwrite-strings', '-Woverloaded-virtual', '-Wno-sign-compare', '-DS2_USE_EXACTFLOAT', '-DHASH_NAMESPACE=std', '-std=c++11'],
-   CPPPATH=[distutils.sysconfig.get_python_inc(), '..', '../s2'],
+   CPPPATH=['..', '../s2'],
    LIBS=['s2'],
    LIBPATH='..',
    SHLIBPREFIX='',
@@ -19,6 +19,7 @@ env.Append(
    SWIGFLAGS=['-python', '-c++'],
    SWIGPATH=['../s2'],
 )
+env.ParseConfig('python-config --includes --libs')
 
 lib_s2 = env.LoadableModule('_s2', ['s2.i'])
 
