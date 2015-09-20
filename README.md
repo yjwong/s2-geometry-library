@@ -38,6 +38,8 @@ sudo scons install
 
 This will also build the Python bindings.
 
+You can uninstall the library with `sudo scons install -c`.
+
 ### As a Debian package
 
 FIXME: make this work with scons
