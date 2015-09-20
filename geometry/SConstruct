@@ -50,9 +50,11 @@ libs2 = env.SharedLibrary('s2',
    UTIL_HASH_LIB_FILES +
    UTIL_MATH_LIB_FILES +
    ['s1interval.cc', 's2cap.cc', 's2cell.cc', 's2cellunion.cc', 's2edgeindex.cc', 's2edgeutil.cc', 's2latlngrect.cc', 's2loop.cc', 's2pointregion.cc', 's2polygon.cc', 's2polygonbuilder.cc', 's2polyline.cc', 's2r2rect.cc', 's2region.cc', 's2regioncoverer.cc', 's2regionintersection.cc', 's2regionunion.cc'],
-   LIBS=env.Dictionary('LIBS') + [libs2cellid]
+   LIBS=env.Dictionary('LIBS') + ['s2cellid'],
+   LIBPATH=['.'],
 )
 
+env.Requires(libs2, libs2cellid)
 
 env.Install('/usr/include/s2', ['s2/' + x for x in ['r1interval.h', 's1angle.h', 's1interval.h', 's2cap.h', 's2cell.h', 's2cellid.h', 's2cellunion.h', 's2edgeindex.h', 's2edgeutil.h', 's2.h', 's2latlng.h', 's2latlngrect.h', 's2loop.h', 's2pointregion.h', 's2polygonbuilder.h', 's2polygon.h', 's2polyline.h', 's2r2rect.h', 's2regioncoverer.h', 's2region.h', 's2regionintersection.h', 's2regionunion.h', 's2testing.h']])
 env.Install('/usr/lib', [libs2, libs2cellid])
