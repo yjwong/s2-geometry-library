@@ -1,16 +1,25 @@
 #!python
-import distutils.sysconfig, os.path
+import distutils.sysconfig, os.path, SCons.Tool.swig
 
 package_dir = os.path.join(distutils.sysconfig.get_python_lib(0,0), 's2')
-
 env = Environment(
-   SWIGFLAGS=['-python', '-c++'],
-   SWIGPATH=['../s2'],
+   CPPFLAGS=['-Wall', '-Wwrite-strings', '-Woverloaded-virtual', '-Wno-sign-compare', '-DS2_USE_EXACTFLOAT', '-DHASH_NAMESPACE=std', '-std=c++11'],
    CPPPATH=[distutils.sysconfig.get_python_inc(), '..', '../s2'],
    LIBS=['s2', 's2cellid'],
    LIBPATH='..',
    SHLIBPREFIX='',
 )
+
+SCons.Tool.swig.generate(env)
+
+env.Append(
+   SWIGFLAGS=['-python', '-c++'],
+   SWIGPATH=['../s2'],
+)
+#SCons.Tool.swig.generate(env)
+#env.Append(SWIG='/opt/local/bin/swig')
+
+#env.Tool('swig')
 
 lib_s2 = env.LoadableModule('_s2', ['s2.i'])
 
