@@ -5,21 +5,20 @@ package_dir = os.path.join(distutils.sysconfig.get_python_lib(0,0), 's2')
 env = Environment(
    CPPFLAGS=['-Wall', '-Wwrite-strings', '-Woverloaded-virtual', '-Wno-sign-compare', '-DS2_USE_EXACTFLOAT', '-DHASH_NAMESPACE=std', '-std=c++11'],
    CPPPATH=[distutils.sysconfig.get_python_inc(), '..', '../s2'],
-   LIBS=['s2', 's2cellid'],
+   LIBS=['s2'],
    LIBPATH='..',
    SHLIBPREFIX='',
 )
 
-SCons.Tool.swig.generate(env)
+if env['PLATFORM'] == 'darwin':
+   # This is so that scons properly searches /etc/paths for swig.
+   SCons.Tool.swig.generate(env)
 
+# These come later as s.t.swig.generate overwrites it
 env.Append(
    SWIGFLAGS=['-python', '-c++'],
    SWIGPATH=['../s2'],
 )
-#SCons.Tool.swig.generate(env)
-#env.Append(SWIG='/opt/local/bin/swig')
-
-#env.Tool('swig')
 
 lib_s2 = env.LoadableModule('_s2', ['s2.i'])
 

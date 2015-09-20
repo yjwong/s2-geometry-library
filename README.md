@@ -18,7 +18,7 @@ You'll need the development (-dev or -devel) versions of these libraries in orde
 - gflags
 - OpenSSL (used for [BIGNUM](https://www.openssl.org/docs/manmaster/crypto/bn.html) functions)
 
-On Mac OS X, you will need install these with MacPorts using the `+universal` build flag.
+On Mac OS X, you will need install these with MacPorts using the `+universal` build flag.  Make sure `/opt/local/bin` is not only listed in `$PATH`, but also in `/etc/paths` (otherwise Python bindings will fail to build).
 
 ## Building
 ### The Linux From Scratch way (also for OSX)
