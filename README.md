@@ -1,7 +1,7 @@
 # s2-geometry-library
 
 * License: Apache 2.0 (see `COPYING`)
-* Upstream: https://code.google.com/p/s2-geometry-library/
+* Upstream: https://code.google.com/archive/p/s2-geometry-library/ (unmaintained)
 * With fixes from [micolous](https://github.com/micolous/), [silicontrip](https://github.com/silicontrip/) and [yjwong](https://github.com/yjwong/).
 * Presentation: https://docs.google.com/presentation/d/1Hl4KapfAENAOf4gv-pSngKwvS_jwNVHRPZTTDzXXn6Q/view?pli=1
 * Documentation: none provided by upstream, read the presentation; other ports have better documentation
