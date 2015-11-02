@@ -43,5 +43,8 @@ Makefile
 tmp
 geometry/python/s2.py
 geometry/python/s2_wrap.cc
+geometry/python/s2_wrap.cpp
 *.dylib
 *.dll
+*.pc
+
