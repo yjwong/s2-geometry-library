@@ -18,6 +18,8 @@ You'll need the development (-dev or -devel) versions of these libraries in orde
 - gflags
 - OpenSSL (used for [BIGNUM](https://www.openssl.org/docs/manmaster/crypto/bn.html) functions)
 
+A C++ compiler supporting C++11 (g++ 4.8 or later, clang 3.3 or later) is also required.
+
 ### Mac OS X
 
 Make sure you are using python.org Python, and that it is the default in your path (not Apple's Python or Macports Python).
