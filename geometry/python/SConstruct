@@ -1,5 +1,6 @@
 #!python
 import distutils.sysconfig, os.path, SCons.Tool.swig
+from os import environ
 
 package_dir = os.path.join(distutils.sysconfig.get_python_lib(0,0), 's2')
 env = Environment(
@@ -9,6 +10,11 @@ env = Environment(
    SHLIBPREFIX='',
 )
 
+if 'CC' in environ:
+   env.Replace(CC = environ['CC'])
+if 'CXX' in environ:
+   env.Replace(CXX = environ['CXX'])
+      
 if env['PLATFORM'] == 'darwin':
    # This is so that scons properly searches /etc/paths for swig.
    SCons.Tool.swig.generate(env)

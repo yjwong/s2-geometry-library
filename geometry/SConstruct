@@ -1,11 +1,18 @@
 #!python
 import SCons.Tool.textfile
+from os import environ
 
 env = Environment(
    CPPFLAGS=['-Wall', '-Wwrite-strings', '-Woverloaded-virtual', '-Wno-sign-compare', '-DS2_USE_EXACTFLOAT', '-DHASH_NAMESPACE=std', '-std=c++11'],
    CPPPATH=['.', 's2'],
    prefix='/usr',
 )
+
+if 'CC' in environ:
+   env.Replace(CC = environ['CC'])
+if 'CXX' in environ:
+   env.Replace(CXX = environ['CXX'])
+
 
 SCons.Tool.textfile.generate(env)
 
