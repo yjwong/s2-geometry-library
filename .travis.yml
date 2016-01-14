@@ -9,7 +9,6 @@ notifications:
 addons:
   apt:
     packages:
-      - libgflags-dev
       - libssl-dev
       - python-dev
       - scons
@@ -27,7 +26,7 @@ matrix:
 before_install:
 - |
   if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
-    brew install gflags openssl scons swig
+    brew install openssl scons swig
   fi
 
 script:
