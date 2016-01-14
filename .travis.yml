@@ -14,12 +14,13 @@ addons:
       - scons
       - swig
 
-sudo: false
+sudo: required
 
 matrix:
   include:
     - os: linux
       compiler: gcc
+      dist: trusty
     - os: osx
       compiler: clang
 
@@ -31,6 +32,8 @@ before_install:
 
 script:
 - scons
+- sudo scons install
+- python test.py
 
 # TODO: run the unit tests
 
