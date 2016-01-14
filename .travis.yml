@@ -1,0 +1,37 @@
+language: cpp
+
+git:
+  depth: 10
+
+notifications:
+  email: false
+
+addons:
+  apt:
+    packages:
+      - libgflags-dev
+      - libssl-dev
+      - python-dev
+      - scons
+      - swig
+
+sudo: false
+
+matrix:
+  include:
+    - os: linux
+      compiler: gcc
+    - os: osx
+      compiler: clang
+
+before_install:
+- |
+  if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
+    brew install gflags openssl scons swig
+  fi
+
+script:
+- scons
+
+# TODO: run the unit tests
+
