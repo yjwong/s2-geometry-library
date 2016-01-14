@@ -5,7 +5,7 @@ from os import environ
 package_dir = os.path.join(distutils.sysconfig.get_python_lib(0,0), 's2')
 env = Environment(
    CPPPATH=['..', '../s2'],
-   LIBS=['s2'],
+   LIBS=['s2', 's2util'],
    LIBPATH='..',
    SHLIBPREFIX='',
 )

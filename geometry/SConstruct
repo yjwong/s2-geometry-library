@@ -20,6 +20,12 @@ pc_vars = {'@prefix@': '$prefix', '@version@': '0.1.0'}
 
 env.ParseConfig('pkg-config libgflags openssl --cflags-only-I --libs')
 
+try:
+   libpaths = env.Dictionary('LIBPATH')
+except KeyError:
+   # We have no existing libpaths specified
+   libpaths = []
+
 BASE_LIB_FILES = [
    'base/int128.cc',
    'base/logging.cc',
@@ -48,33 +54,32 @@ UTIL_MATH_LIB_FILES = [
    'util/math/mathlimits.cc',
    'util/math/exactfloat/exactfloat.cc',
 ]
-libs2cellid = env.SharedLibrary('s2cellid',
+
+libs2util = env.SharedLibrary('s2util',
    BASE_LIB_FILES +
    STRINGS_LIB_FILES +
    UTIL_CODING_LIB_FILES +
    UTIL_HASH_LIB_FILES +
-   UTIL_MATH_LIB_FILES +
+   UTIL_MATH_LIB_FILES
+)	
+
+libs2cellid = env.SharedLibrary('s2cellid',
    ['s1angle.cc', 's2.cc', 's2cellid.cc', 's2latlng.cc'],
+   LIBS=env.Dictionary('LIBS') + ['s2util'],
+   LIBPATH=libpaths + ['.'],
 )
 
-try:
-   libpaths = env.Dictionary('LIBPATH')
-except KeyError:
-   # We have no existing libpaths specified
-   libpaths = []
+env.Requires(libs2cellid, libs2util)
 
 libs2 = env.SharedLibrary('s2',
-   BASE_LIB_FILES +
-   STRINGS_LIB_FILES +
-   UTIL_CODING_LIB_FILES +
-   UTIL_HASH_LIB_FILES +
-   UTIL_MATH_LIB_FILES +
    ['s1interval.cc', 's2cap.cc', 's2cell.cc', 's2cellunion.cc', 's2edgeindex.cc', 's2edgeutil.cc', 's2latlngrect.cc', 's2loop.cc', 's2pointregion.cc', 's2polygon.cc', 's2polygonbuilder.cc', 's2polyline.cc', 's2r2rect.cc', 's2region.cc', 's2regioncoverer.cc', 's2regionintersection.cc', 's2regionunion.cc'],
-   LIBS=env.Dictionary('LIBS') + ['s2cellid'],
+   LIBS=env.Dictionary('LIBS') + ['s2cellid', 's2util'],
    LIBPATH=libpaths + ['.'],
 )
 
 env.Requires(libs2, libs2cellid)
+env.Requires(libs2, libs2util)
+
 
 s2cellid_pc = env.Substfile('s2cellid.pc.in', SUBST_DICT=pc_vars)
 s2_pc = env.Substfile('s2.pc.in', SUBST_DICT=pc_vars)
