@@ -93,7 +93,7 @@ env.Install('$prefix/include/s2/util/endian', ['util/endian/endian.h'])
 env.Install('$prefix/include/s2/util/hash', ['util/hash/hash' + x for x in ['.h', '_jenkins_lookup2.h']])
 env.Install('$prefix/include/s2/util/math', ['util/math/' + x for x in ['mathlimits.h', 'mathutil.h', 'matrix3x3.h', 'matrix3x3-inl.h', 'vector2.h', 'vector2-inl.h', 'vector3.h', 'vector3-inl.h', 'vector4.h', 'vector4-inl.h']])
 
-env.Install('$prefix/lib', [libs2, libs2cellid])
+env.Install('$prefix/lib', [libs2, libs2cellid, libs2util])
 
 env.Install('$prefix/lib/pkgconfig', [s2_pc, s2cellid_pc])
 
