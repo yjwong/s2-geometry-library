@@ -6,7 +6,7 @@ Name: s2
 Version: @version@
 Description: S2 Spherical Geometry Library (extras)
 Requires: s2cellid = @version@
-Requires.private: libgflags, openssl
+Requires.private: openssl
 Cflags: -I${includedir}/s2
 Libs: -L${libdir} -ls2
 

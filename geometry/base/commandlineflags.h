@@ -14,6 +14,16 @@
 #ifndef BASE_COMMANDLINEFLAGS_H
 #define BASE_COMMANDLINEFLAGS_H
 
-#include "gflags/gflags.h"
+
+// All the gflags are moved here.
+
+#define FLAGS_s2debug DEBUG_MODE
+//, "Enable debugging checks in s2 code");
+#define FLAGS_always_recurse_on_children false
+/*            "When we test a query edge against a cell, we don't "
+            "recurse if there are only a few test edges in it.  "
+            "For testing, it is useful to always recurse to the end.  "
+            "You don't want to use this flag anywhere but in tests.");*/
+
 
 #endif  // BASE_COMMANDLINEFLAGS_H

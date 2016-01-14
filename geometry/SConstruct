@@ -18,7 +18,7 @@ SCons.Tool.textfile.generate(env)
 
 pc_vars = {'@prefix@': '$prefix', '@version@': '0.1.0'}
 
-env.ParseConfig('pkg-config libgflags openssl --cflags-only-I --libs')
+env.ParseConfig('pkg-config openssl --cflags-only-I --libs')
 
 try:
    libpaths = env.Dictionary('LIBPATH')
@@ -86,7 +86,7 @@ s2_pc = env.Substfile('s2.pc.in', SUBST_DICT=pc_vars)
 env.Requires(s2_pc, s2cellid_pc)
 
 env.Install('$prefix/include/s2', ['s2/' + x for x in ['r1interval.h', 's1angle.h', 's1interval.h', 's2cap.h', 's2cell.h', 's2cellid.h', 's2cellunion.h', 's2edgeindex.h', 's2edgeutil.h', 's2.h', 's2latlng.h', 's2latlngrect.h', 's2loop.h', 's2pointregion.h', 's2polygonbuilder.h', 's2polygon.h', 's2polyline.h', 's2r2rect.h', 's2regioncoverer.h', 's2region.h', 's2regionintersection.h', 's2regionunion.h', 's2testing.h']])
-env.Install('$prefix/include/s2/base', ['base/' + x for x in ['basictypes.h', 'casts.h', 'commandlineflags.h', 'int128.h', 'integral_types.h', 'logging.h', 'macros.h', 'port.h', 'scoped_ptr.h', 'stl_decl.h', 'stl_decl_msvc.h', 'stl_decl_osx.h', 'stringprintf.h', 'strtoint.h', 'template_util.h', 'type_traits.h']])
+env.Install('$prefix/include/s2/base', ['base/' + x for x in ['basictypes.h', 'casts.h', 'int128.h', 'integral_types.h', 'logging.h', 'macros.h', 'port.h', 'scoped_ptr.h', 'stl_decl.h', 'stl_decl_msvc.h', 'stl_decl_osx.h', 'stringprintf.h', 'strtoint.h', 'template_util.h', 'type_traits.h']])
 env.Install('$prefix/include/s2/strings', ['strings/' + x for x in ['ascii_ctype.h', 'split.h', 'stringprintf.h', 'strutil.h']])
 env.Install('$prefix/include/s2/util/coding', ['util/coding/' + x for x in ['coder.h', 'varint.h']])
 env.Install('$prefix/include/s2/util/endian', ['util/endian/endian.h'])

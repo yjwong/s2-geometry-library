@@ -35,8 +35,6 @@ using std::vector;
 #include "s2polygonbuilder.h"
 #include "s2polyline.h"
 
-DECLARE_bool(s2debug);  // defined in s2.cc
-
 static const unsigned char kCurrentEncodingVersionNumber = 1;
 
 typedef pair<S2Point, S2Point> S2Edge;

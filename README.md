@@ -15,7 +15,6 @@ In Python code, `import s2`.
 
 You'll need the development (-dev or -devel) versions of these libraries in order to build the library.
 
-- gflags
 - OpenSSL (used for [BIGNUM](https://www.openssl.org/docs/manmaster/crypto/bn.html) functions)
 
 You'll need these build-time dependencies:

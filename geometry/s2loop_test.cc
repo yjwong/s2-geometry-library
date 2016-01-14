@@ -34,8 +34,6 @@ using std::vector;
 #include "util/math/matrix3x3.h"
 #include "util/math/matrix3x3-inl.h"
 
-DECLARE_bool(s2debug);
-
 class S2LoopTestBase : public testing::Test {
  protected:
   // Some standard loops to use in the tests (see descriptions below).  The

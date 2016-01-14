@@ -38,11 +38,11 @@ using std::vector;
 #include "s2loop.h"
 #include "s2testing.h"
 
-DEFINE_string(max_cells, "4,8",
-              "Comma-separated list of values to use for 'max_cells'");
+#define FLAGS_max_cells "4,8"
+//              "Comma-separated list of values to use for 'max_cells'");
 
-DEFINE_int32(iters, DEBUG_MODE ? 1000 : 100000,
-             "Number of random caps to try for each max_cells value");
+#define FLAGS_iters (DEBUG_MODE ? 1000 : 100000)
+//             "Number of random caps to try for each max_cells value");
 
 TEST(S2RegionCoverer, RandomCells) {
   S2RegionCoverer coverer;
