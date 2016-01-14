@@ -18,9 +18,14 @@ You'll need the development (-dev or -devel) versions of these libraries in orde
 - gflags
 - OpenSSL (used for [BIGNUM](https://www.openssl.org/docs/manmaster/crypto/bn.html) functions)
 
+You'll need these build-time dependencies:
+
+- SCons
+- SWIG (must be `swig` in your PATH)
+
 A C++ compiler supporting C++11 (g++ 4.8 or later, clang 3.3 or later) is also required.
 
-### Mac OS X
+### Mac OS X specific notes
 
 Make sure you are using python.org Python, and that it is the default in your path (not Apple's Python or Macports Python).
 
@@ -44,7 +49,7 @@ You can uninstall the library with `sudo scons install -c`.
 
 ### As a Debian package
 
-FIXME: make this work with scons
+This is currently broken, and needs to be ported to scons.
 
 ```console
 apt-get install python-dev debhelper libgflags-dev cdbs swig build-essential fakeroot autoconf libtool pkg-config
