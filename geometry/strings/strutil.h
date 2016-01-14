@@ -77,7 +77,6 @@ static const int kFastToBufferSize =       32;
 //#include "endian.h"
 
 // ----------------------------------------------------------------------
-// FpToString()
 // FloatToString()
 // IntToString()
 // Int64ToString()
@@ -88,7 +87,6 @@ static const int kFastToBufferSize =       32;
 //    represented in 16 hex digits.
 // ----------------------------------------------------------------------
 
-string FpToString(Fprint fp);
 string FloatToString(float f, const char* format);
 string IntToString(int i, const char* format);
 string Int64ToString(int64 i64, const char* format);
