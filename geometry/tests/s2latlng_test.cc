@@ -4,8 +4,7 @@
 #include "base/macros.h"
 #include "base/stringprintf.h"
 #include "strings/split.h"
-#include "testing/base/public/gunit.h"
-#include "testing/base/public/benchmark.h"
+#include <gtest/gtest.h>
 #include "s2testing.h"
 
 TEST(S2LatLng, TestBasic) {
@@ -126,6 +125,8 @@ TEST(S2LatLng, TestToStringReturnsString) {
   EXPECT_EQ(S2LatLng::FromDegrees(0, 1).ToStringInDegrees(), s);
 }
 
+// This isn't available in googletest
+#if 0
 
 static void BM_ToPoint(int iters) {
     S2LatLng ll(S1Angle::E7(0x150bc888), S1Angle::E7(0x5099d63f));
@@ -134,3 +135,5 @@ static void BM_ToPoint(int iters) {
     }
 }
 BENCHMARK(BM_ToPoint);
+#endif
+

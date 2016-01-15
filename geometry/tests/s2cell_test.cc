@@ -13,7 +13,7 @@ using std::vector;
 
 #include "base/commandlineflags.h"
 #include "base/logging.h"
-#include "testing/base/public/gunit.h"
+#include <gtest/gtest.h>
 #include "s2.h"
 #include "s2cap.h"
 #include "s2latlngrect.h"

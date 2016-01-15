@@ -6,15 +6,23 @@ using std::max;
 using std::swap;
 using std::reverse;
 
+#if defined __GNUC__ || defined __APPLE__
+#include <ext/hash_set>
+#else
 #include <hash_set>
+#endif
 using __gnu_cxx::hash_set;
+
+#include <functional>
+using std::binary_function;
 
 #include "s2.h"
 #include "base/logging.h"
 #include "s2latlng.h"
 #include "s2testing.h"
 #include "util/math/matrix3x3-inl.h"
-#include "testing/base/public/gunit.h"
+#include "util/hash/hash.h"
+#include <gtest/gtest.h>
 
 static inline int SwapAxes(int ij) {
   return ((ij >> 1) & 1) + ((ij & 1) << 1);
@@ -706,7 +714,7 @@ TEST(S2, S2PointHashSpreads) {
   int kTestPoints = 1 << 16;
   hash_set<size_t> set;
   hash_set<S2Point> points;
-  hash<S2Point> hasher;
+  __gnu_cxx::hash<S2Point> hasher;
   S2Point base = S2Point(1, 1, 1);
   for (int i = 0; i < kTestPoints; ++i) {
     // All points in a tiny cap to test avalanche property of hash

@@ -2,7 +2,7 @@
 
 #include "r1interval.h"
 
-#include "testing/base/public/gunit.h"
+#include <gtest/gtest.h>
 
 static void TestIntervalOps(R1Interval const& x, R1Interval const& y,
                             const char* expected) {

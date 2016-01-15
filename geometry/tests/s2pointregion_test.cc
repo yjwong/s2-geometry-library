@@ -2,11 +2,12 @@
 
 #include "s2pointregion.h"
 
-#include "testing/base/public/gunit.h"
+#include <gtest/gtest.h>
 #include "util/coding/coder.h"
 #include "s2cap.h"
 #include "s2cell.h"
 #include "s2latlngrect.h"
+#include "s2testing.h"
 
 namespace {
 

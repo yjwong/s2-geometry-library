@@ -23,8 +23,7 @@ using std::vector;
 #include "base/macros.h"
 #include "base/scoped_ptr.h"
 #include "strings/stringprintf.h"
-#include "testing/base/public/benchmark.h"
-#include "testing/base/public/gunit.h"
+#include <gtest/gtest.h>
 #include "util/coding/coder.h"
 #include "s2.h"
 #include "s2cap.h"
@@ -1114,6 +1113,9 @@ string GenerateInputForBenchmark(int num_vertices_per_loop_for_bm) {
   return encoded;
 }
 
+// This isn't available in googletest
+#if 0
+
 static void BM_S2Decoding(int iters, int num_vertices_per_loop_for_bm) {
   StopBenchmarkTiming();
   string encoded = GenerateInputForBenchmark(num_vertices_per_loop_for_bm);
@@ -1223,3 +1225,5 @@ BENCHMARK(BM_DisjointPolygonUnion)
     ->Arg(1024)
     ->Arg(4096)
     ->Arg(8192);
+#endif
+

@@ -10,7 +10,11 @@ using std::max;
 using std::swap;
 using std::reverse;
 
+#if defined __GNUC__ || defined __APPLE__
+#include <ext/hash_map>
+#else
 #include <hash_map>
+#endif
 using __gnu_cxx::hash_map;
 
 #include <queue>
@@ -28,8 +32,7 @@ using std::vector;
 #include "base/strtoint.h"
 #include "strings/split.h"
 #include "strings/stringprintf.h"
-#include "testing/base/public/benchmark.h"
-#include "testing/base/public/gunit.h"
+#include <gtest/gtest.h>
 #include "s2cap.h"
 #include "s2cell.h"
 #include "s2cellid.h"
@@ -268,6 +271,8 @@ TEST(S2RegionCoverer, Accuracy) {
   }
 }
 
+// This isn't available in googletest
+#if 0
 
 // Two concentric loops don't cross so there is no 'fast exit'
 static void BM_Covering(int iters, int max_cells, int num_vertices) {
@@ -288,3 +293,5 @@ static void BM_Covering(int iters, int max_cells, int num_vertices) {
   }
 }
 BENCHMARK(BM_Covering)->RangePair(8, 1024, 8, 1<<17);
+#endif
+

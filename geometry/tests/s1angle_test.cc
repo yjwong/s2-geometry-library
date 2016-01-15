@@ -7,7 +7,7 @@
 #include "base/commandlineflags.h"
 #include "base/integral_types.h"
 #include "base/logging.h"
-#include "testing/base/public/gunit.h"
+#include <gtest/gtest.h>
 #include "s2latlng.h"
 #include "s2testing.h"
 
