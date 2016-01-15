@@ -15,8 +15,6 @@ using std::vector;
 #include "s2latlng.h"
 #include "s2testing.h"
 
-DECLARE_bool(s2debug);
-
 namespace {
 
 S2Polyline* MakePolyline(string const& str) {

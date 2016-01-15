@@ -2,13 +2,15 @@
 
 #include "util/math/exactfloat/exactfloat.h"
 #include <cstring>
-
+#include <cmath>
 #include <math.h>
 #include <algorithm>
+
 using std::min;
 using std::max;
 using std::swap;
 using std::reverse;
+using std::signbit;
 
 #include <limits>
 using std::numeric_limits;

@@ -53,7 +53,7 @@
 
 %{
 #include <vector>
-#ifdef __GNUC__
+#if defined __GNUC__ || defined __APPLE__
 #include <ext/hash_map>
 #include <ext/hash_set>
 #else
@@ -328,7 +328,6 @@ COPY_TYPEMAPS(unsigned long long, uint64);
 COPY_TYPEMAPS(unsigned int, size_t);
 COPY_TYPEMAPS(unsigned int, mode_t);
 COPY_TYPEMAPS(long, time_t);
-COPY_TYPEMAPS(uint64, Fprint);
 
 #undef COPY_TYPEMAPS
 

@@ -33,11 +33,13 @@ using std::vector;
 #include "third_party/htm/include/RangeConvex.h"
 #undef int8
 
-DEFINE_int32(iters, 20000000,
-             "Number of iterations for timing tests with optimized build");
+#define FLAGS_iters 20000000
+//             "Number of iterations for timing tests with optimized build");
 
-DEFINE_int32(htm_level, 29, "Maximum HTM level to use");
-DEFINE_int32(build_level, 5, "HTM build level to use");
+#define FLAGS_htm_level 29
+// "Maximum HTM level to use");
+#define FLAGS_build_level 5
+// "HTM build level to use");
 
 static S2CellId GetCellId(double lat_degrees, double lng_degrees) {
   S2CellId id = S2CellId::FromLatLng(S2LatLng::FromDegrees(lat_degrees,

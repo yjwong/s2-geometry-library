@@ -24,8 +24,6 @@ using std::vector;
 #include "s2polyline.h"
 #include "s2testing.h"
 
-DECLARE_bool(s2debug);
-
 namespace {
 
 const int kDegen = -2;

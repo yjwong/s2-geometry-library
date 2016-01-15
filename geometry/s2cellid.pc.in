@@ -1,0 +1,11 @@
+prefix=@prefix@
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: s2cellid
+Version: @version@
+Description: S2 Spherical Geometry Library (core)
+Requires.private: openssl
+Cflags: -I${includedir}/s2
+Libs: -L${libdir} -ls2cellid
+

@@ -18,8 +18,6 @@ using std::vector;
 #include "s2latlng.h"
 #include "s2edgeutil.h"
 
-DECLARE_bool(s2debug);  // defined in s2.cc
-
 static const unsigned char kCurrentEncodingVersionNumber = 1;
 
 S2Polyline::S2Polyline()

@@ -24,4 +24,27 @@ Makefile.in
 # Vim swap files
 *.sw*
 !*.swig
+*~
+
+*.o
+*.lo
+*.la
+*.os
+*.pyc
+*.dblite
+*.so
+libtool
+stamp-h1
+.deps
+.dirstamp
+Makefile
+*.log
+.libs
+tmp
+geometry/python/s2.py
+geometry/python/s2_wrap.cc
+geometry/python/s2_wrap.cpp
+*.dylib
+*.dll
+*.pc
 

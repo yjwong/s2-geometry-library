@@ -11,8 +11,8 @@
 #include "s2latlng.h"
 #include "s2testing.h"
 
-DEFINE_int32(iters, (DEBUG_MODE ? 100 : 1000) * (1000 * 1000),
-             "Run timing tests with this many iterations");
+#define FLAGS_iters ((DEBUG_MODE ? 100 : 1000) * (1000 * 1000))
+//             "Run timing tests with this many iterations");
 
 TEST(S1Angle, DefaultConstructor) {
   // Check that the default constructor returns an angle of 0.

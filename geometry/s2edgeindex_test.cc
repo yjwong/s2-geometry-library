@@ -27,8 +27,6 @@ using std::vector;
 #include "util/math/vector3-inl.h"
 #include "util/math/matrix3x3-inl.h"
 
-DECLARE_bool(always_recurse_on_children);
-
 typedef pair<S2Point, S2Point> S2Edge;
 
 static const double kEarthRadiusMeters = 6371000;

@@ -2,7 +2,7 @@
 // Author: Andrew Eland (andrewe@google.com)
 
 %module s2
-%include base.swig
+%include base.i
 
 %{
 #include <sstream>
@@ -15,6 +15,8 @@
 #include "s2regioncoverer.h"
 #include "s2cell.h"
 #include "s2cellunion.h"
+#include "s2loop.h"
+#include "s2polygon.h"
 %}
 
 // The PACKED macro makes SWIG think that we're declaring a variable of type
@@ -53,6 +55,10 @@ vector<S2CellId> *OUTPUT {
 %apply vector<S2CellId> *OUTPUT {vector<S2CellId> *covering};
 %apply vector<S2CellId> *OUTPUT {vector<S2CellId> *output};
 
+%include "std_vector.i"
+%template(S2PointVector) std::vector<S2Point>;
+//%template(S2LoopVector) std::vector<S2Loop>;
+
 #endif
 
 %include "r1interval.h"
@@ -66,6 +72,8 @@ vector<S2CellId> *OUTPUT {
 %include "s2regioncoverer.h"
 %include "s2cell.h"
 %include "s2cellunion.h"
+%include "s2loop.h"
+%include "s2polygon.h"
 
 %define USE_STREAM_INSERTOR_FOR_STR(type)
   %extend type {
@@ -118,4 +126,6 @@ USE_STREAM_INSERTOR_FOR_STR(S2LatLngRect)
 
 USE_EQUALS_FOR_EQ_AND_NE(S2CellId)
 USE_COMPARISON_FOR_LT_AND_GT(S2CellId)
+// FIXME: Throws compiler errors when enabled.
 //USE_STD_HASH_FOR_HASH(S2CellId)
+

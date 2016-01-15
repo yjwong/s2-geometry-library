@@ -1,0 +1,49 @@
+language: cpp
+
+git:
+  depth: 10
+
+notifications:
+  email: false
+
+addons:
+  apt:
+    packages:
+      - libssl-dev
+      - python-dev
+      - scons
+      - swig
+
+sudo: required
+
+matrix:
+  include:
+    - os: linux
+      compiler: gcc
+      dist: trusty
+    - os: osx
+      compiler: clang
+
+before_install:
+- |
+  if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
+    brew install openssl scons swig
+  fi
+  python -V
+
+script:
+- scons
+- sudo scons install
+- |
+  if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
+    # We really want to use the system Python, because Travis' has broken
+    # distutils paths.
+    /usr/bin/python -v -c 'import s2'
+    /usr/bin/python test.py
+  else
+    python -v -c 'import s2'
+    python test.py
+  fi
+
+# TODO: run the unit tests
+

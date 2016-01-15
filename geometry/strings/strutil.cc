@@ -21,12 +21,6 @@ using std::max;
 using std::swap;
 using std::reverse;
 
-#include <hash_map>
-using __gnu_cxx::hash_map;
-
-#include <hash_set>
-using __gnu_cxx::hash_set;
-
 #include <iterator>
 #include <limits>
 using std::numeric_limits;
@@ -58,18 +52,11 @@ using std::vector;
 #endif
 
 // ----------------------------------------------------------------------
-// FpToString()
 // FloatToString()
 // IntToString()
 //    Convert various types to their string representation.  These
 //    all do the obvious, trivial thing.
 // ----------------------------------------------------------------------
-
-string FpToString(Fprint fp) {
-  char buf[17];
-  snprintf(buf, sizeof(buf), "%016llx", fp);
-  return string(buf);
-}
 
 string FloatToString(float f, const char* format) {
   char buf[80];

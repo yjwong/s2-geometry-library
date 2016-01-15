@@ -1,0 +1,43 @@
+#!python
+import distutils.sysconfig, os.path, SCons.Tool.swig
+from os import environ
+
+package_dir = os.path.join(distutils.sysconfig.get_python_lib(0,0), 's2')
+env = Environment(
+   CPPPATH=['..', '../s2'],
+   LIBS=['s2', 's2util'],
+   LIBPATH='..',
+   SHLIBPREFIX='',
+)
+
+if 'CC' in environ:
+   env.Replace(CC = environ['CC'])
+if 'CXX' in environ:
+   env.Replace(CXX = environ['CXX'])
+      
+if env['PLATFORM'] == 'darwin':
+   # This is so that scons properly searches /etc/paths for swig.
+   SCons.Tool.swig.generate(env)
+
+   # Python uses .so suffix on OS X, not .dylib
+   env['SHLIBSUFFIX'] = '.so'
+
+   # Clang requires that we explicitly link s2cellid, but this breaks gflags on
+   # Linux:
+   #
+   # ERROR: something wrong with flag 's2debug' in file 'geometry/s2.cc'.
+   env.Append(LIBS=['s2cellid'])
+
+# These come later as s.t.swig.generate overwrites it
+env.Append(
+   SWIGFLAGS=['-python', '-c++'],
+   SWIGPATH=['../s2'],
+   CCFLAGS=['-Wall', '-Wwrite-strings', '-Woverloaded-virtual', '-Wno-sign-compare', '-DS2_USE_EXACTFLOAT', '-DHASH_NAMESPACE=std', '-std=c++11'],
+)
+env.ParseConfig('python-config --includes --ldflags')
+
+lib_s2 = env.SharedLibrary('_s2', ['s2.i'])
+
+env.Install(package_dir, [lib_s2, 's2.py', '__init__.py'])
+env.Alias('install', package_dir)
+

@@ -38,10 +38,9 @@ using std::vector;
 #include "util/math/matrix3x3.h"
 #include "util/math/matrix3x3-inl.h"
 
-DEFINE_int32(num_loops_per_polygon_for_bm,
-             10,
-             "Number of loops per polygon to use for an s2polygon "
-             "encode/decode benchmark. Can be a maximum of 90.");
+#define FLAGS_num_loops_per_polygon_for_bm          10
+//             "Number of loops per polygon to use for an s2polygon "
+//             "encode/decode benchmark. Can be a maximum of 90.");
 
 // A set of nested loops around the point 0:0 (lat:lng).
 // Every vertex of kNear0 is a vertex of kNear1.
