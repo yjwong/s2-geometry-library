@@ -31,9 +31,12 @@ before_install:
   fi
   python -V
 
+# Travis supplies their own version of Python, and advise not to use the
+# system Python environment.
+
 script:
-- scons
-- sudo scons install
+- python `which scons`
+- sudo python `which scons` install
 - python test.py || python -v -c 'import s2' && exit 1
 
 # TODO: run the unit tests
