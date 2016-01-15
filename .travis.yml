@@ -29,11 +29,12 @@ before_install:
   if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
     brew install openssl scons swig
   fi
+  python -V
 
 script:
 - scons
 - sudo scons install
-- python test.py
+- python test.py || python -v -c 'import s2' && exit 1
 
 # TODO: run the unit tests
 
