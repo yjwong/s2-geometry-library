@@ -38,9 +38,11 @@ script:
   if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
     # We really want to use the system Python, because Travis' has broken
     # distutils paths.
-    /usr/bin/python test.py || /usr/bin/python -v -c 'import s2' && exit 1
+    /usr/bin/python -v -c 'import s2'
+    /usr/bin/python test.py
   else
-    python test.py || python -v -c 'import s2' && exit 1
+    python -v -c 'import s2'
+    python test.py
   fi
 
 # TODO: run the unit tests
