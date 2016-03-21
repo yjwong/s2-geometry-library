@@ -40,17 +40,25 @@ Make sure `/opt/local/bin` and `/Library/Frameworks/Python.framework/Versions/2.
 ### The Linux From Scratch way (also for OSX)
 
 ```console
-scons
-sudo scons install
+cd geometry
+cmake .
+make -j3
+sudo make install
 ```
 
-This will also build the Python bindings.
+Then to install Python 2.7 bindings:
 
-You can uninstall the library with `sudo scons install -c`.
+```console
+cd python
+cmake .
+make
+sudo make install
+```
+
 
 ### As a Debian package
 
-This is currently broken, and needs to be ported to scons.
+This is currently broken, and needs to be ported to cmake.
 
 ```console
 apt-get install python-dev debhelper libgflags-dev cdbs swig build-essential fakeroot autoconf libtool pkg-config
