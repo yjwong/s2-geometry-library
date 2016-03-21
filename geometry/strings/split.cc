@@ -2,6 +2,7 @@
 
 #include <limits>
 using std::numeric_limits;
+#include <stdint.h>
 
 
 #include "base/commandlineflags.h"

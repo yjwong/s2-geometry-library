@@ -44,7 +44,12 @@ tmp
 geometry/python/s2.py
 geometry/python/s2_wrap.cc
 geometry/python/s2_wrap.cpp
+geometry/python/s2PYTHON_wrap.cxx
 *.dylib
 *.dll
 *.pc
-
+*.a
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+install_manifest.txt

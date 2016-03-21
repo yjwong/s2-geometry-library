@@ -18,8 +18,7 @@ using std::vector;
 #include "base/commandlineflags.h"
 #include "base/logging.h"
 #include "base/scoped_ptr.h"
-#include "testing/base/public/benchmark.h"
-#include "testing/base/public/gunit.h"
+#include <gtest/gtest.h>
 #include "s2cap.h"
 #include "s2polyline.h"
 #include "s2testing.h"
@@ -130,6 +129,8 @@ TEST(S2EdgeUtil, Crossings) {
                 -1, false, false);
 }
 
+// This isn't available in googletest
+#if 0
 typedef bool CrossingFunction(S2Point const&, S2Point const&,
                               S2Point const&, S2Point const&);
 void BenchmarkCrossing(CrossingFunction crossing, int iters) {
@@ -171,6 +172,7 @@ void BM_RobustCrossing(int iters) {
 }
 BENCHMARK(BM_RobustCrossing);
 
+#endif
 S2LatLngRect GetEdgeBound(double x1, double y1, double z1,
                           double x2, double y2, double z2) {
   S2EdgeUtil::RectBounder bounder;
@@ -620,6 +622,8 @@ TEST(S2EdgeUtil, CoincidentZeroLengthEdgesThatDontTouch) {
   }
 }
 
+// This isn't available in googletest
+#if 0
 
 static void BM_RobustCrosserEdgesCross(int iters) {
   // Copied from BenchmarkCrossing() above.
@@ -644,6 +648,6 @@ static void BM_RobustCrosserEdgesCross(int iters) {
   VLOG(5) << "num_crossings = " << num_crossings;
 }
 BENCHMARK(BM_RobustCrosserEdgesCross);
-
+#endif
 
 }  // namespace

@@ -23,8 +23,7 @@ using std::vector;
 #include "base/commandlineflags.h"
 #include "base/logging.h"
 #include "base/scoped_ptr.h"
-#include "testing/base/public/benchmark.h"
-#include "testing/base/public/gunit.h"
+#include <gtest/gtest.h>
 #include "util/coding/coder.h"
 #include "s2cell.h"
 #include "s2edgeindex.h"
@@ -711,6 +710,9 @@ TEST(s2loop, IsValidDetectsInvalidLoops) {
 TEST(s2loop, IsValidDetectsLargeInvalidLoops) {
 }
 
+// This isn't available in googletest
+#if 0
+
 static void BM_ContainsOrCrosses(int iters, int num_vertices) {
   StopBenchmarkTiming();
   S2Loop* p1 = S2Testing::MakeRegularLoop(S2::Origin(), num_vertices, 0.005);
@@ -763,3 +765,5 @@ static void BM_ContainsQuery(int iters, int num_vertices) {
   delete loop;
 }
 BENCHMARK_RANGE(BM_ContainsQuery, 4, 1 << 16);
+#endif
+

@@ -12,6 +12,11 @@ using std::vector;
 #include "s2.h"
 #include "s2cellid.h"
 
+using std::ostringstream;
+using std::hex;
+
+#include "base/scoped_ptr.h"
+
 class S2LatLngRect;
 class S2Loop;
 class S2Polygon;

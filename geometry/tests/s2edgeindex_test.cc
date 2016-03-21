@@ -16,8 +16,7 @@ using std::vector;
 #include "base/commandlineflags.h"
 #include "base/stringprintf.h"
 #include "base/logging.h"
-#include "testing/base/public/benchmark.h"
-#include "testing/base/public/gunit.h"
+#include <gtest/gtest.h>
 #include "s2cap.h"
 #include "s2cell.h"
 #include "s2cellid.h"
@@ -214,7 +213,7 @@ TEST(S2EdgeIndex, LongEdgeCrossesLoop) {
 }
 
 TEST(S2EdgeIndex, CollinearEdgesOnCellBoundaries) {
-  FLAGS_always_recurse_on_children = true;
+  //FLAGS_always_recurse_on_children = true;
   const int kNumPointsOnEdge = 8;  // About 32 edges
   for (int level = 0; level <= S2CellId::kMaxLevel; ++level) {
     S2Cell cell(S2Testing::GetRandomCellId(level));
@@ -270,6 +269,8 @@ TEST(S2EdgeIndex, QuadTreeGetsComputedAutomatically) {
   delete loop;
 }
 
+// This isn't available in googletest
+#if 0
 
 // MICROBENCHMARKS (and related structures)
 
@@ -311,6 +312,7 @@ static void ComputeCrossings(int num_edges,
   }
 }
 
+
 // "Sparse" tests are those where we expect relatively few segment crossings.
 // In general the segment lengths are short (< 300m) and the random segments
 // are distributed over caps of radius 5-50km.
@@ -321,6 +323,7 @@ static void BM_TestCrossingsSparse(int iters, int num_edges, int brute_force) {
     ComputeCrossings(num_edges, 100, 5000,  brute_force);
   }
 }
+
 BENCHMARK(BM_TestCrossingsSparse)
     ->ArgPair(10, true)
     ->ArgPair(10, false)
@@ -384,3 +387,5 @@ BENCHMARK(BM_QuadTreeFindCost)
   ->Arg(100)
   ->Arg(1000)
   ->Arg(10000);
+#endif
+

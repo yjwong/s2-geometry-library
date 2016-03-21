@@ -27,23 +27,14 @@ matrix:
 before_install:
 - |
   if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
-    brew install openssl scons swig
+    brew update
+    brew install swig
+    brew outdated openssl || brew upgrade openssl
+    brew outdated cmake || brew upgrade cmake
   fi
-  python -V
+- python -V
 
 script:
-- scons
-- sudo scons install
-- |
-  if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
-    # We really want to use the system Python, because Travis' has broken
-    # distutils paths.
-    /usr/bin/python -v -c 'import s2'
-    /usr/bin/python test.py
-  else
-    python -v -c 'import s2'
-    python test.py
-  fi
+- ./travis.sh
 
-# TODO: run the unit tests
 

@@ -10,7 +10,7 @@
 #include "s2cap.h"
 #include "s2cell.h"
 #include "s2testing.h"
-#include "testing/base/public/gunit.h"
+#include <gtest/gtest.h>
 
 static S2LatLngRect RectFromDegrees(double lat_lo, double lng_lo,
                                     double lat_hi, double lng_hi) {

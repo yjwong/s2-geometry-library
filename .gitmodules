@@ -1,0 +1,3 @@
+[submodule "geometry/tests/googletest"]
+	path = geometry/tests/googletest
+	url = https://github.com/google/googletest.git
