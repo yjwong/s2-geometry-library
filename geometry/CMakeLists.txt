@@ -1,5 +1,6 @@
 project(s2 CXX)
 set(PROJECT_NAME s2)
+set(PROJECT_VERSION 0.1.0)
 cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
 add_definitions(-DS2_USE_EXACTFLOAT -DHASH_NAMESPACE=std)
 set_property(GLOBAL PROPERTY CXX_STANDARD 11)
@@ -149,6 +150,18 @@ install(TARGETS s2util s2cellid s2
 	ARCHIVE DESTINATION lib
 )
 
+CONFIGURE_FILE(
+	${CMAKE_CURRENT_SOURCE_DIR}/s2.pc.in
+	${CMAKE_CURRENT_BINARY_DIR}/s2.pc
+	@ONLY
+)
+
+CONFIGURE_FILE(
+	${CMAKE_CURRENT_SOURCE_DIR}/s2cellid.pc.in
+	${CMAKE_CURRENT_BINARY_DIR}/s2cellid.pc
+	@ONLY
+)
+
 # Install header files
 install(FILES ${s2includes} DESTINATION include/s2)
 install(FILES ${s2includes_base} DESTINATION include/s2/base)
@@ -157,4 +170,6 @@ install(FILES ${s2includes_util_coding} DESTINATION include/s2/util/coding)
 install(FILES ${s2includes_util_endian} DESTINATION include/s2/util/endian)
 install(FILES ${s2includes_util_hash} DESTINATION include/s2/util/hash)
 install(FILES ${s2includes_util_math} DESTINATION include/s2/util/math)
+install(FILES ${CMAKE_BINARY_DIR}/s2.pc DESTINATION lib/pkgconfig)
+install(FILES ${CMAKE_BINARY_DIR}/s2cellid.pc DESTINATION lib/pkgconfig)
 
