@@ -57,6 +57,84 @@ set(s2_files
 	s2regionunion.cc
 )
 
+set(s2includes
+	s2/r1interval.h
+	s2/s1angle.h
+	s2/s1interval.h
+	s2/s2cap.h
+	s2/s2cell.h
+	s2/s2cellid.h
+	s2/s2cellunion.h
+	s2/s2edgeindex.h
+	s2/s2edgeutil.h
+	s2/s2.h
+	s2/s2latlng.h
+	s2/s2latlngrect.h
+	s2/s2loop.h
+	s2/s2pointregion.h
+	s2/s2polygonbuilder.h
+	s2/s2polygon.h
+	s2/s2polyline.h
+	s2/s2r2rect.h
+	s2/s2regioncoverer.h
+	s2/s2region.h
+	s2/s2regionintersection.h
+	s2/s2regionunion.h
+)
+
+set(s2includes_base
+	base/basictypes.h
+	base/casts.h
+	base/commandlineflags.h
+	base/int128.h
+	base/integral_types.h
+	base/logging.h
+	base/macros.h
+	base/port.h
+	base/scoped_ptr.h
+	base/stl_decl.h
+	base/stl_decl_msvc.h
+	base/stl_decl_osx.h
+	base/stringprintf.h
+	base/strtoint.h
+	base/template_util.h
+	base/type_traits.h
+)
+
+set(s2includes_strings
+	strings/ascii_ctype.h
+	strings/split.h
+	strings/stringprintf.h
+	strings/strutil.h
+)
+
+set(s2includes_util_coding
+	util/coding/coder.h
+	util/coding/varint.h
+)
+
+set(s2includes_util_endian
+	util/endian/endian.h
+)
+
+set(s2includes_util_hash
+	util/hash/hash.h
+	util/hash/hash_jenkins_lookup2.h
+)
+
+set(s2includes_util_math
+	util/math/mathlimits.h
+	util/math/mathutil.h
+	util/math/matrix3x3.h
+	util/math/matrix3x3-inl.h
+	util/math/vector2.h
+	util/math/vector2-inl.h
+	util/math/vector3.h
+	util/math/vector3-inl.h
+	util/math/vector4.h
+	util/math/vector4-inl.h
+)
+
 add_library(s2util SHARED ${s2util_files})
 target_link_libraries(s2util ${OPENSSL_LIBRARIES})
 
@@ -71,4 +149,12 @@ install(TARGETS s2util s2cellid s2
 	ARCHIVE DESTINATION lib
 )
 
+# Install header files
+install(FILES ${s2includes} DESTINATION include/s2)
+install(FILES ${s2includes_base} DESTINATION include/s2/base)
+install(FILES ${s2includes_strings} DESTINATION include/s2/strings)
+install(FILES ${s2includes_util_coding} DESTINATION include/s2/util/coding)
+install(FILES ${s2includes_util_endian} DESTINATION include/s2/util/endian)
+install(FILES ${s2includes_util_hash} DESTINATION include/s2/util/hash)
+install(FILES ${s2includes_util_math} DESTINATION include/s2/util/math)
 
