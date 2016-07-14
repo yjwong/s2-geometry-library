@@ -21,7 +21,7 @@ You'll need the development (-dev or -devel) versions of these libraries in orde
 
 You'll need these build-time dependencies:
 
-- SCons
+- CMake
 - SWIG (must be `swig` in your PATH)
 
 A C++ compiler supporting C++11 (g++ 4.8 or later, clang 3.3 or later) is also required.
@@ -29,8 +29,6 @@ A C++ compiler supporting C++11 (g++ 4.8 or later, clang 3.3 or later) is also r
 ### Mac OS X specific notes
 
 Make sure you are using python.org Python, and that it is the default in your path (not Apple's Python or Macports Python).
-
-Install `scons` using `easy_install`, not MacPorts.
 
 Other dependencies will need to be installed with MacPorts using the `+universal` build flag.
 
