@@ -1,6 +1,11 @@
 #!/bin/sh -x
 # Continuous integration script for Travis
 
+# Add flags for openssl on osx
+if [ "${TRAVIS_OS_NAME}" == "osx" ]; then
+  export OPENSSL_ROOT_DIR="/usr/local/opt/openssl"
+fi
+
 # Build the library and install it.
 echo "## Building and installing libs2..."
 cd geometry
