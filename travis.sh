@@ -1,9 +1,10 @@
 #!/bin/sh -x
 # Continuous integration script for Travis
 
-# Add flags for openssl on osx
+# Add flags for openssl and Python on osx
 if [ "${TRAVIS_OS_NAME}" == "osx" ]; then
-  export OPENSSL_ROOT_DIR="/usr/local/opt/openssl"
+	export OPENSSL_ROOT_DIR="/usr/local/opt/openssl"
+	export PATH="/usr/bin:${PATH}"
 fi
 
 # Build the library and install it.
@@ -37,7 +38,21 @@ echo "## Building and installing the Python bindings..."
 cd ../python
 cmake .
 make VERBOSE=1
-sudo make install
+sudo make install VERBOSE=1
+
+# Run extra debug for OSX
+if [ "${TRAVIS_OS_NAME}" == "osx" ]; then
+	otool -L _s2.so
+
+	# Handle System Integrity Protection
+	for l in s2 s2cellid s2util
+	do
+		otool -L /usr/local/lib/lib${l}.dylib
+		install_name_tool -change "@rpath/lib${l}.dylib" "/usr/local/lib/lib${l}.dylib" "_s2.so"
+	done
+
+	otool -L _s2.so
+fi
 
 # Run the Python tests
 echo "## Running the Python tests..."
