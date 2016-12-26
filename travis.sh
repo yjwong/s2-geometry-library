@@ -41,7 +41,7 @@ make VERBOSE=1
 sudo make install VERBOSE=1
 
 # Run extra debug for OSX
-if [ "${TRAVIS_OS_NAME}" == "osx" ]; then
+if [ "${TRAVIS_OS_NAME}" = "osx" ]; then
 	otool -L _s2.so
 
 	# Handle System Integrity Protection
