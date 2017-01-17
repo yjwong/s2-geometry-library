@@ -7,7 +7,7 @@
 #ifndef UTIL_MATH_MATHUTIL_H__
 #define UTIL_MATH_MATHUTIL_H__
 
-#include <math.h>
+#include <cmath>
 #include <algorithm>
 using std::min;
 using std::max;

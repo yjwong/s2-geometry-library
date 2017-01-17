@@ -1,7 +1,7 @@
 Source: s2
 Priority: optional
 Maintainer: Wong Yong Jie <yjwong92@gmail.com>
-Build-Depends: debhelper (>= 8.0.0), autotools-dev, libgflags-dev, cdbs
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, libgflags-dev, cdbs, python-dev, swig
 Standards-Version: 3.9.4
 Section: libs
 Homepage: http://code.google.com/p/s2-geometry-library/
@@ -31,7 +31,7 @@ Description: Library for Spherical Math
 Package: python-s2
 Section: python
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libs2 (= ${binary:Version})
+Depends: ${shlibs:Depends}, ${misc:Depends}, libs2 (= ${binary:Version}), ${python:depends}, ${swig:depends}
 Description: Python bindings for libs2
  The python-s2 package contains bindings for libs2, a library for spherical
  math.

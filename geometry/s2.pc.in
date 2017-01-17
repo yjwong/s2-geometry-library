@@ -1,0 +1,12 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: s2
+Version: @PROJECT_VERSION@
+Description: S2 Spherical Geometry Library (extras)
+Requires: s2cellid = @PROJECT_VERSION@
+Requires.private: openssl
+Cflags: -I${includedir}/s2
+Libs: -L${libdir} -ls2
+

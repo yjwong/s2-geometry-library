@@ -87,9 +87,9 @@ static inline bool ascii_isascii(unsigned char c) {
 }
 #undef kApb
 
-extern const char kAsciiToLower[256];
-static inline char ascii_tolower(unsigned char c) { return kAsciiToLower[c]; }
-extern const char kAsciiToUpper[256];
-static inline char ascii_toupper(unsigned char c) { return kAsciiToUpper[c]; }
+extern const unsigned char kAsciiToLower[256];
+static inline unsigned char ascii_tolower(unsigned char c) { return kAsciiToLower[c]; }
+extern const unsigned char kAsciiToUpper[256];
+static inline unsigned char ascii_toupper(unsigned char c) { return kAsciiToUpper[c]; }
 
 #endif  // STRINGS_ASCII_CTYPE_H__
