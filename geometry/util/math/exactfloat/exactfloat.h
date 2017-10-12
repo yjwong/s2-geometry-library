@@ -96,17 +96,16 @@
 
 #include <math.h>
 #include <limits.h>
+
 #include <iostream>
-using std::ostream;
-using std::cout;
-using std::endl;
-
+#include <memory>
 #include <string>
-using std::string;
 
-#include "base/logging.h"
-#include "base/integral_types.h"
-#include "openssl/bn.h"
+#include <openssl/bn.h>
+
+struct BIGNUM_deleter {
+  void operator()(BIGNUM *b) { BN_free(b); }
+};
 
 class ExactFloat {
  public:
@@ -284,17 +283,17 @@ class ExactFloat {
   // Note that if two values have different precisions, they may have the same
   // ToString() value even though their values are slightly different.  If you
   // need to distinguish such values, use ToUniqueString() intead.
-  string ToString() const;
+  std::string ToString() const;
 
   // Return a string formatted according to printf("%Ng") where N is the given
   // maximum number of significant digits.
-  string ToStringWithMaxDigits(int max_digits) const;
+  std::string ToStringWithMaxDigits(int max_digits) const;
 
   // Return a human-readable string such that if two ExactFloats have different
   // values, then their string representations are always different.  This
   // method is useful for debugging.  The string has the form "value<prec>",
   // where "prec" is the actual precision of the ExactFloat (e.g., "0.215<50>").
-  string ToUniqueString() const;
+  std::string ToUniqueString() const;
 
   // Return an upper bound on the number of significant digits required to
   // distinguish any two floating-point numbers with the given precision when
@@ -302,7 +301,7 @@ class ExactFloat {
   static int NumSignificantDigitsForPrec(int prec);
 
   // Output the ExactFloat in human-readable format, e.g. for logging.
-  friend ostream& operator<<(ostream& o, ExactFloat const& f) {
+  friend std::ostream& operator<<(std::ostream& o, ExactFloat const& f) {
     return o << f.ToString();
   }
 
@@ -500,7 +499,7 @@ class ExactFloat {
   //  - bn_exp_ is the base-2 exponent applied to bn_.
   int32 sign_;
   int32 bn_exp_;
-  BIGNUM bn_;
+  std::unique_ptr<BIGNUM, BIGNUM_deleter> bn_;
 
   // A standard IEEE "double" has a 53-bit mantissa consisting of a 52-bit
   // fraction plus an implicit leading "1" bit.
@@ -517,7 +516,7 @@ class ExactFloat {
   // Convert the ExactFloat to a decimal value of the form 0.ddd * (10 ** x),
   // with at most "max_digits" significant digits (trailing zeros are removed).
   // Set (*digits) to the ASCII digits and return the decimal exponent "x".
-  int GetDecimalDigits(int max_digits, string* digits) const;
+  int GetDecimalDigits(int max_digits, std::string* digits) const;
 
   // Return a_sign * fabs(a) + b_sign * fabs(b).  Used to implement addition
   // and subtraction.
@@ -556,16 +555,18 @@ class ExactFloat {
   static ExactFloat Unimplemented();
 };
 
+inline std::unique_ptr<BIGNUM, BIGNUM_deleter> make_BN_new() {
+  std::unique_ptr<BIGNUM, BIGNUM_deleter> ret(BN_new(), BIGNUM_deleter{});
+  // guarantee(ret.get() != nullptr);
+  return ret;
+}
+
 /////////////////////////////////////////////////////////////////////////
 // Implementation details follow:
 
-inline ExactFloat::ExactFloat() : sign_(1), bn_exp_(kExpZero) {
-  BN_init(&bn_);
-}
+inline ExactFloat::ExactFloat() : sign_(1), bn_exp_(kExpZero), bn_(make_BN_new()) {}
 
-inline ExactFloat::~ExactFloat() {
-  BN_free(&bn_);
-}
+inline ExactFloat::~ExactFloat() {}
 
 inline bool ExactFloat::is_zero() const { return bn_exp_ == kExpZero; }
 inline bool ExactFloat::is_inf() const { return bn_exp_ == kExpInfinity; }
@@ -601,5 +602,9 @@ inline ExactFloat ExactFloat::CopyWithSign(int sign) const {
   r.sign_ = sign;
   return r;
 }
+
+void BN_ext_set_uint64(BIGNUM *bn, uint64 v);
+uint64 BN_ext_get_uint64(const BIGNUM *bn);
+int BN_ext_count_low_zero_bits(const BIGNUM *bn);
 
 #endif  // UTIL_MATH_EXACTFLOAT_EXACTFLOAT_H_
